@@ -350,12 +350,14 @@ def resize_and_save_image(load_path, write_file, save_dir, link_dir, img_size, o
     """
     write_path = os.path.join(save_dir, write_file)
     link_path = os.path.join(link_dir, write_file)
-    if not overwrite:
-        if exists_or_link(write_path, link_path):
-            return 1
     if not os.path.exists(load_path):
         print("not exist",load_path)
         return 0
+
+    if not overwrite:
+        if exists_or_link(write_path, link_path):
+            return 1
+
     img = Image.open(load_path)
     img = resizeimage.resize_contain(img, [img_size, img_size])
     # rgb_im = img.convert('RGB')
