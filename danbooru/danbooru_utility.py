@@ -361,6 +361,7 @@ def resize_and_save_image(load_path, write_file, save_dir, link_dir, img_size, o
     img = Image.open(load_path)
     img = resizeimage.resize_contain(img, [img_size, img_size])
     # rgb_im = img.convert('RGB')
+    if img.mode in ("RGBA", "P"): img = img.convert("RGB")
     print('Saving!!!!',load_path)
     img.save(write_path, img.format)
     img.close()
