@@ -449,6 +449,7 @@ def detect_faces(
 
         try:
             img = resizeimage.resize_contain(img, [img_size, img_size])
+            if img.mode in ("RGBA", "P"): img = img.convert("RGB")
             img.save(face_write_path, img.format)
             num_processed += 1
         except Exception as detail:
