@@ -202,6 +202,23 @@ Here's an example metadata entry in Danbooru2018:
 
 You can explore the metadata and find what tags are associated with each image using `--preview`.
 
+
+## Preview json entries only
+
+```python
+(base) student@datascience:/media/Storage2$ danbooru-utility --directory ./danbooru/ --metadata_dir metadata/2019/ --rating "s" --required_tags "archer,toosaka_rin,hug" --max_examples 3 --meta_preview True
+./danbooru/original/0598/2053598.jpg
+./danbooru/original/0382/2541382.jpg
+./danbooru/original/0478/54478.png
+```
+Looking for images with solo, and with any below tags:long_hair, hort_hair,smile,open_mouth
+
+```python
+(base) student@datascience:/media/Storage2$ danbooru-utility --directory ./danbooru/ --metadata_dir metadata/2019/ --rating "s" --required_tags "solo" --atleast_tags "long_hair, hort_hair,smile,open_mouth" --max_examples 10 --meta_preview True
+
+```
+
+
 ## Improvements
 
 This could load the dataset into a relational database, allowing much more efficient and powerful querying.
