@@ -517,7 +517,7 @@ def main(args=None):
 
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
-
+    print(args.meta_preview)
     if not args.meta_preview:
         data_gen = load_data(args)
         resize_and_save_images_mp(data_gen, args)
