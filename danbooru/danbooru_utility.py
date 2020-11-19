@@ -131,6 +131,14 @@ def get_args(arg_input):
         help='Preview images.'
     )
     parser.add_argument(
+        '--ta_preview',
+        type=str2bool,
+        nargs='?',
+        const=True,
+        default=False,
+        help='Process json only.'
+    )
+    parser.add_argument(
         '--faces',
         type=str2bool,
         nargs='?',
@@ -483,6 +491,24 @@ def preview(data_gen, args):
         if i >= args.max_examples:
             break
 
+def preview_json(data_gen, args):
+    """
+    Display image and meta data
+
+    """
+    i = 0
+    for example in data_gen:
+        img_id = example['id']
+        load_path = os.path.join(
+            args.directory,
+            'original',
+            "{0:0{width}}".format(int(img_id) % 1000, width=4),
+            "{0}.{1}".format(img_id, example['file_ext']),
+        )
+        print(load_path)
+        i += 1
+        if i >= args.max_examples:
+            break
 
 def main(args=None):
     if args == None:
@@ -492,8 +518,13 @@ def main(args=None):
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
 
-    data_gen = load_data(args)
-    resize_and_save_images_mp(data_gen, args)
+    if not args.meta_preview:
+        data_gen = load_data(args)
+        resize_and_save_images_mp(data_gen, args)
+    else:
+        data_gen = load_data(args)
+        preview(data_gen, args)
+
     if args.preview:
         data_gen = load_data(args)
         preview(data_gen, args)
