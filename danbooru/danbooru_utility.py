@@ -523,7 +523,7 @@ def main(args=None):
         resize_and_save_images_mp(data_gen, args)
     else:
         data_gen = load_data(args)
-        preview(data_gen, args)
+        preview_json(data_gen, args)
 
     if args.preview:
         data_gen = load_data(args)
