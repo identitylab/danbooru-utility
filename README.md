@@ -6,7 +6,7 @@ Danbooru Utility is a simple python script for working with gwern's Danbooru2018
 ## Install
 
 ```sh
-pip3 install danbooru-utility
+pip install git+https://github.com/identitylab/danbooru-utility.git
 ```
 
 Make sure you have downloaded [Danbooru2018](https://www.gwern.net/Danbooru2018). It's ~3.3M annotated anime images, so downloading may take a long time.

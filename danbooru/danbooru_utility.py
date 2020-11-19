@@ -131,7 +131,7 @@ def get_args(arg_input):
         help='Preview images.'
     )
     parser.add_argument(
-        '--ta_preview',
+        '--meta_preview',
         type=str2bool,
         nargs='?',
         const=True,
