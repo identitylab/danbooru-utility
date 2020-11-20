@@ -212,6 +212,7 @@ def load_data(args):
     metadata_paths = find_metadata_files(
         os.path.join(args.directory, args.metadata_dir)
     )
+    atleast_tags = set(line.strip() for line in open('most_freq_tag_gt1k.txt'))
     i = 0
     for path in metadata_paths:
         with open(path, "r") as f:
@@ -228,7 +229,8 @@ def load_data(args):
                     included_ratings=args.ratings,
                     required_tags=args.required_tags,
                     banned_tags=args.banned_tags,
-                    atleast_tags=args.atleast_tags,
+                    # atleast_tags=args.atleast_tags,
+                    atleast_tags=atleast_tags,
                     atleast_num=args.atleast_num,
                 ):
                     i += 1
