@@ -497,25 +497,27 @@ def preview(data_gen, args):
 
 def preview_json(data_gen, args):
     """
-    Display image and meta data
+    Process filtered json entries
 
     """
+    data = []
+
     i = 0
     for example in data_gen:
         img_id = example['id']
         load_path = os.path.join(
-            args.directory,
-            'original',
             "{0:0{width}}".format(int(img_id) % 1000, width=4),
             "{0}.{1}".format(img_id, example['file_ext']),
         )
         with open('filtered_data.txt', 'a') as outfile:
             json.dump(example, outfile)
             outfile.write("\n")
-
+        with open("filtered_file_path.txt", "a") as myfile:
+            myfile.write(load_path+"\n")
         i += 1
         if i >= args.max_examples:
             break
+
     print("total:",i)
 
 def main(args=None):
