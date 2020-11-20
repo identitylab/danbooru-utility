@@ -213,6 +213,7 @@ def load_data(args):
         os.path.join(args.directory, args.metadata_dir)
     )
     atleast_tags = set(line.strip() for line in open('most_freq_tag_gt1k.txt'))
+    print(atleast_tags)
     i = 0
     for path in metadata_paths:
         with open(path, "r") as f:
