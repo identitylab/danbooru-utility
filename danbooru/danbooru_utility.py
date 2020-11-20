@@ -509,7 +509,7 @@ def preview_json(data_gen, args):
             "{0:0{width}}".format(int(img_id) % 1000, width=4),
             "{0}.{1}".format(img_id, example['file_ext']),
         )
-        with open('data.txt', 'a') as outfile:
+        with open('filtered_data.txt', 'a') as outfile:
             json.dump(example, outfile)
             outfile.write("\n")
 
