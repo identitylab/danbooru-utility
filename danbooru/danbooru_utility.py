@@ -232,7 +232,7 @@ def load_data(args):
                     atleast_num=args.atleast_num,
                 ):
                     i += 1
-                    yield example,i
+                    yield example
 
 
 
@@ -509,6 +509,7 @@ def preview_json(data_gen, args):
         i += 1
         if i >= args.max_examples:
             break
+    print("total:",i)
 
 def main(args=None):
     if args == None:
@@ -522,8 +523,7 @@ def main(args=None):
         data_gen = load_data(args)
         resize_and_save_images_mp(data_gen, args)
     else:
-        (data_gen,i) = load_data(args)
-        print("total:",i)
+        data_gen = load_data(args)
         preview_json(data_gen, args)
     if args.preview:
         data_gen = load_data(args)
