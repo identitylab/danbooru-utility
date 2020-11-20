@@ -505,8 +505,6 @@ def preview_json(data_gen, args):
             "{0:0{width}}".format(int(img_id) % 1000, width=4),
             "{0}.{1}".format(img_id, example['file_ext']),
         )
-        print(example)
-        print(load_path)
         i += 1
         if i >= args.max_examples:
             break
@@ -525,7 +523,7 @@ def main(args=None):
     else:
         data_gen = load_data(args)
         preview_json(data_gen, args)
-
+    print('we have total No.:',len(data_gen))
     if args.preview:
         data_gen = load_data(args)
         preview(data_gen, args)
