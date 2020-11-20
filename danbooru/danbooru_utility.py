@@ -509,8 +509,8 @@ def preview_json(data_gen, args):
             "{0:0{width}}".format(int(img_id) % 1000, width=4),
             "{0}.{1}".format(img_id, example['file_ext']),
         )
-        with open('data.txt', 'a') as outfile:
-            json.dump(example, outfile,indent=2)
+        with open('data.txt', 'a', newline='\n') as outfile:
+            json.dump(example, outfile)
         i += 1
         if i >= args.max_examples:
             break
