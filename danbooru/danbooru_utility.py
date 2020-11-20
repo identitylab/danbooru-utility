@@ -233,6 +233,7 @@ def load_data(args):
                 ):
                     i += 1
                     yield example
+    print("total:",i)
 
 
 def find_metadata_files(directory):
@@ -523,7 +524,6 @@ def main(args=None):
     else:
         data_gen = load_data(args)
         preview_json(data_gen, args)
-    print('we have total No.:',len(data_gen))
     if args.preview:
         data_gen = load_data(args)
         preview(data_gen, args)
