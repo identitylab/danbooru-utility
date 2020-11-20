@@ -522,7 +522,7 @@ def main(args=None):
         data_gen = load_data(args)
         resize_and_save_images_mp(data_gen, args)
     else:
-        data_gen,i = load_data(args)
+        (data_gen,i) = load_data(args)
         print("total:",i)
         preview_json(data_gen, args)
     if args.preview:
