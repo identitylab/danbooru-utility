@@ -219,6 +219,11 @@ Looking for images with solo, and with any below tags:long_hair, hort_hair,smile
 ```
 
 
+# download from server
+
+`rsync -a --files-from=filtered_file_path.txt rsync://78.46.86.149:873/danbooru2019/original/ ./`
+
+
 ## Improvements
 
 This could load the dataset into a relational database, allowing much more efficient and powerful querying.
