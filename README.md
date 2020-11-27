@@ -224,6 +224,11 @@ Looking for images with solo, and with any below tags:long_hair, hort_hair,smile
 `rsync -a --files-from=filtered_file_path.txt rsync://78.46.86.149:873/danbooru2019/original/ ./`
 
 
+
+# Crop face
+```python
+danbooru-utility --directory ./danbooru2019/ --rating "s" --img_size 512  --faces --face_scale 1.8
+```
 ## Improvements
 
 This could load the dataset into a relational database, allowing much more efficient and powerful querying.

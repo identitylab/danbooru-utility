@@ -139,6 +139,14 @@ def get_args(arg_input):
         help='Process json only.'
     )
     parser.add_argument(
+        '--meta_filter_portraits',
+        type=str2bool,
+        nargs='?',
+        const=True,
+        default=False,
+        help='Process json and filter out portraits.'
+    )
+    parser.add_argument(
         '--faces',
         type=str2bool,
         nargs='?',
@@ -237,6 +245,38 @@ def load_data(args):
                     i += 1
                     yield example
 
+
+
+def load_data_filter(args):
+    """
+    loads and yields image data from metadata files
+    """
+    data = []
+    metadata_paths = find_metadata_files(
+        os.path.join(args.directory, args.metadata_dir)
+    )
+    i = 0
+    for path in metadata_paths:
+        with open(path, "r") as f:
+            for line in f:
+                #if i >= args.max_examples:
+                    #break
+                example = json.loads(line)
+                if tag_check(
+                    {y['name']
+                     for y in example['tags']},
+                    example['rating'],
+                    example['score'],
+                    score_range=args.score_range,
+                    included_ratings=args.ratings,
+                    required_tags=args.required_tags,
+                    banned_tags=args.banned_tags,
+                    atleast_tags=args.atleast_tags,
+                    # atleast_tags=atleast_tags,
+                    atleast_num=args.atleast_num,
+                ):
+                    i += 1
+                    yield example
 
 
 def find_metadata_files(directory):
@@ -520,11 +560,36 @@ def preview_json(data_gen, args):
 
     print("total:",i)
 
+from os import listdir
+from os.path import isfile, join
+def filter_json_portraits(data_gen, args):
+    """
+    Process filtered json entries
+
+    """
+    data = []
+    mypath = '/media/Storage2/datasets/portraits'
+    onlyfiles = set([int(f[:-5]) for f in listdir(mypath) if isfile(join(mypath, f))])#f[:-5] 10004550.jpg 0.jpg  need to be removed
+
+    i = 0
+    for example in data_gen:
+        img_id = example['id']
+        if int(img_id)  in onlyfiles:
+            with open('metadata_portraits.txt', 'a') as outfile:
+                json.dump(example, outfile)
+                outfile.write("\n")
+        i += 1
+
+    print("total:",i)
+
+
 def main(args=None):
     if args == None:
         arg_input = sys.argv[1:]
         args = get_args(arg_input)
-
+    if args.meta_filter_portraits:# generate metadata for portraits, original portraits does not have any tags associated.
+        data_gen = load_data_filter(args)
+        filter_json_portraits(data_gen, args)
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
     print(args.meta_preview)

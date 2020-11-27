@@ -91,7 +91,6 @@ mole_under_eye
 skindentation
 hair_bobbles
 gradient_hair
-chair
 wavy_hair
 floating_hair
 low_twintails
@@ -162,7 +161,6 @@ straight_hair
 curly_hair
 sun_hat
 short_ponytail
-hand_on_another's_head
 short_hair_with_long_locks
 extra_ears
 hairpin
@@ -196,7 +194,6 @@ green_background
 white_skin
 asymmetrical_hair
 mouse_ears
-eyeball
 tentacle_hair
 hair_bell
 pink_lips
@@ -215,7 +212,6 @@ wide-eyed
 alternate_hair_length
 hair_tie
 forehead_mark
-head_out_of_frame
 snake_hair_ornament
 hand_on_headwear
 adjusting_eyewear
@@ -258,14 +254,11 @@ striped_background
 evil_smile
 heart_hair_ornament
 bags_under_eyes
-himekaidou_hatate
 short_eyebrows
-hand_on_another's_face
 butterfly_hair_ornament
 head_wreath
 scar_across_eye
 eyes
-hair_over_breasts
 checkered_background
 front_ponytail
 deep_skin
@@ -287,7 +280,6 @@ big_hair
 fox_mask
 glowing_eye
 animal_on_head
-face-to-face
 rimless_eyewear
 hand_on_own_head
 hand_behind_head
@@ -345,7 +337,6 @@ ringed_eyes
 halftone_background
 multicolored_background
 heart_earrings
-invisible_chair
 evil_grin
 aqua_background
 red_skin
@@ -389,7 +380,6 @@ finger_in_mouth
 alternate_headwear
 ears
 gas_mask
-armchair
 sideways_mouth
 orange_hairband
 food_on_head
@@ -419,7 +409,6 @@ goggles_on_headwear
 mask_removed
 multi-tied_hair
 covering_eyes
-hands_on_another's_face
 zounose
 pink_skin
 interface_headset
@@ -451,8 +440,6 @@ pink-framed_eyewear
 frilled_hairband
 hands_in_hair
 bandaid_on_nose
-office_chair
-on_chair
 floppy_ears
 rubbing_eyes
 jackal_ears
@@ -474,13 +461,10 @@ green_hairband
 bat_hair_ornament
 symbol_in_eye
 bird_on_head
-breasts_on_head
 black_skin
 hair_pull
 plaid_background
 patterned_background
-p-head_producer
-school_chair
 shading_eyes
 happy_tears
 head_grab
@@ -492,16 +476,13 @@ hair_tousle
 school_hat
 panties_on_head
 puckered_lips
-lounge_chair
 diving_mask_on_head
 braided_ponytail
 hidden_eyes
 fur-trimmed_hat
-hair_brush
 finger_to_face
 pubic_hair_peek
 green-framed_eyewear
 chef_hat
 police_hat
 oni_mask
-
