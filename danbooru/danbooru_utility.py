@@ -642,7 +642,7 @@ def main(args=None):
         filter_json_portraits(data_gen, args)
 
     if args.meta_filter_portraits_labeling:
-        data_gen = load_data(args)
+        load_all_data_into_label(args)
 
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)

@@ -228,7 +228,11 @@ Looking for images with solo, and with any below tags:long_hair, hort_hair,smile
 
 It will generate json records for each images in the portraits dataset, download the generate metadata from https://drive.google.com/file/d/1FdEJR0G-H2DbB4r2rm5X1mUGer0yjsqu/view?usp=sharing
 
+## Generate labels for portraits
+```python
+(base) student@datascience:/media/Storage2$ danbooru-utility --directory ./datasets/ --metadata_dir portraits_meta/ --rating "s" --required_tags "solo"  --max_examples 10 --meta_filter_portraits_labeling True
 
+```
 
 # download from server
 
