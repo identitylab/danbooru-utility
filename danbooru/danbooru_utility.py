@@ -255,6 +255,7 @@ def load_data(args):
                     yield example
 
 
+import csv
 
 
 def load_all_data_into_label(args):
@@ -293,9 +294,9 @@ def load_all_data_into_label(args):
                         else:
                             tmp_records.append(0)
                     #append to csv file
-                    with open("portraits_label.csv", "a") as myfile:
-                        myfile.write(tmp_records)
-
+                    with open("portraits_label.csv", "a") as f:
+                        writer = csv.writer(f)
+                        writer.writerow(tmp_records)
 
 def load_data_filter(args):
     """
