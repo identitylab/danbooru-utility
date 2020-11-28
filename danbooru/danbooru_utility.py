@@ -283,27 +283,20 @@ def load_all_data_into_label(args):
                 #if i >= args.max_examples:
                     #break
                 example = json.loads(line)
-                if tag_check(
-                    {y['name'] for y in example['tags']},
-                    example['rating'],
-                    example['score'],
-                    # score_range=args.score_range,
-                    # included_ratings=args.ratings,
-                    # required_tags=args.required_tags,
-                    # banned_tags=args.banned_tags
-                ):
-                    i += 1
-                    tmp_records = [example['id'],example['file_ext']]
-                    example_tags = {y['name'] for y in example['tags']}
+                i += 1
+                tmp_records = [example['id'], example['file_ext']]
+                example_tags = {y['name'] for y in example['tags']}
+                if 'solo' in example_tags:
                     for tag in atleast_tags:
                         if tag in example_tags:
                             tmp_records.append(1)
                         else:
                             tmp_records.append(0)
-                    #append to csv file
+                    # append to csv file
                     with open(label_file, "a") as f:
                         writer = csv.writer(f)
                         writer.writerow(tmp_records)
+
 
 def load_data_filter(args):
     """
