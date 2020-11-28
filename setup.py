@@ -13,7 +13,7 @@ setup(
     long_description= long_description,
     long_description_content_type='text/markdown',
     include_package_data=True,
-    package_data={'': ['danbooru-utility/lbpcascade_animeface.xml']},
+    package_data={'': ['danbooru-utility/lbpcascade_animeface.xml','danbooru-utility/most_freq_tag_gt1k.txt']},
     packages = find_packages(),    
     py_modules=['danbooru-utility/danbooru_utility'],
     install_requires = [

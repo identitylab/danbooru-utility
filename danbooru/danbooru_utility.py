@@ -147,6 +147,14 @@ def get_args(arg_input):
         help='Process json and filter out portraits.'
     )
     parser.add_argument(
+        '--meta_filter_portraits_labeling',
+        type=str2bool,
+        nargs='?',
+        const=True,
+        default=False,
+        help='Process json and filter out portraits.'
+    )
+    parser.add_argument(
         '--faces',
         type=str2bool,
         nargs='?',
@@ -220,7 +228,8 @@ def load_data(args):
     metadata_paths = find_metadata_files(
         os.path.join(args.directory, args.metadata_dir)
     )
-    atleast_tags = set(line.strip() for line in open('most_freq_tag_gt1k.txt'))
+    most_freq_tag_gt1k_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'most_freq_tag_gt1k.txt')
+    atleast_tags = set(line.strip() for line in open(most_freq_tag_gt1k_file))
     print(atleast_tags)
     i = 0
     for path in metadata_paths:
@@ -245,6 +254,47 @@ def load_data(args):
                     i += 1
                     yield example
 
+
+
+
+def load_all_data_into_label(args):
+    """
+    loads and yields image data from metadata files
+    """
+    data = []
+    metadata_paths = find_metadata_files(
+        os.path.join(args.directory, args.metadata_dir)
+    )
+    most_freq_tag_gt1k_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'most_freq_tag_gt1k.txt')
+    atleast_tags = set(line.strip() for line in open(most_freq_tag_gt1k_file))
+
+    i = 0
+    for path in metadata_paths:
+        with open(path, "r") as f:
+            for line in f:
+                #if i >= args.max_examples:
+                    #break
+                example = json.loads(line)
+                if tag_check(
+                    {y['name'] for y in example['tags']},
+                    example['rating'],
+                    example['score'],
+                    score_range=args.score_range,
+                    included_ratings=args.ratings,
+                    required_tags=args.required_tags,
+                    banned_tags=args.banned_tags
+                ):
+                    i += 1
+                    tmp_records = [example['id'],example['file_ext']]
+                    example_tags = {y['name'] for y in example['tags']}
+                    for tag in atleast_tags:
+                        if tag in example_tags:
+                            tmp_records.append(1)
+                        else:
+                            tmp_records.append()
+                    #append to csv file
+                    with open("filtered_file_path.csv", "a") as myfile:
+                        myfile.write(tmp_records)
 
 
 def load_data_filter(args):
@@ -590,6 +640,10 @@ def main(args=None):
     if args.meta_filter_portraits:# generate metadata for portraits, original portraits does not have any tags associated.
         data_gen = load_data_filter(args)
         filter_json_portraits(data_gen, args)
+
+    if args.meta_filter_portraits_labeling:
+        data_gen = load_data(args)
+
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
     print(args.meta_preview)

@@ -1,1 +1,2 @@
 include danbooru/lbpcascade_animeface.xml
+include danbooru/most_freq_tag_gt1k.txt
