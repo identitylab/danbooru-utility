@@ -268,6 +268,13 @@ def load_all_data_into_label(args):
     )
     most_freq_tag_gt1k_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'most_freq_tag_gt1k.txt')
     atleast_tags = set(line.strip() for line in open(most_freq_tag_gt1k_file))
+    label_file = 'portraits_label.csv'
+    tmp_records = ['id', 'file_ext']
+    for tag in atleast_tags:
+        tmp_records.append(tag)
+    with open(label_file, "a") as f:
+        writer = csv.writer(f)
+        writer.writerow(tmp_records)
 
     i = 0
     for path in metadata_paths:
@@ -294,7 +301,7 @@ def load_all_data_into_label(args):
                         else:
                             tmp_records.append(0)
                     #append to csv file
-                    with open("portraits_label.csv", "a") as f:
+                    with open(label_file, "a") as f:
                         writer = csv.writer(f)
                         writer.writerow(tmp_records)
 

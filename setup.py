@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name = 'danbooru-utility',
-    version = '0.2.53',
+    version = '0.2.54',
     url = 'https://github.com/identitylab/danbooru-utility.git',
     author = 'Reid Sanders, Xingbo Dong',
     author_email = 'reid@reidsanders.net,xingbod@gmail.com',
