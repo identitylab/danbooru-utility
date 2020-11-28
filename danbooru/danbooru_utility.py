@@ -296,7 +296,7 @@ def load_all_data_into_label(args):
                     with open(label_file, "a") as f:
                         writer = csv.writer(f)
                         writer.writerow(tmp_records)
-
+    print("total:",i)
 
 def load_data_filter(args):
     """
