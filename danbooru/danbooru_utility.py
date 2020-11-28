@@ -293,7 +293,7 @@ def load_all_data_into_label(args):
                         else:
                             tmp_records.append()
                     #append to csv file
-                    with open("filtered_file_path.csv", "a") as myfile:
+                    with open("portraits_label.csv", "a") as myfile:
                         myfile.write(tmp_records)
 
 
