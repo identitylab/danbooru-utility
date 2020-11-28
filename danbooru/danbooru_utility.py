@@ -291,7 +291,7 @@ def load_all_data_into_label(args):
                         if tag in example_tags:
                             tmp_records.append(1)
                         else:
-                            tmp_records.append()
+                            tmp_records.append(0)
                     #append to csv file
                     with open("portraits_label.csv", "a") as myfile:
                         myfile.write(tmp_records)
