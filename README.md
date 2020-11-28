@@ -230,7 +230,7 @@ It will generate json records for each images in the portraits dataset, download
 
 ## Generate labels for portraits
 ```python
-(base) student@datascience:/media/Storage2$ danbooru-utility --directory ./datasets/ --metadata_dir portraits_meta/ --rating "s" --required_tags "solo"  --max_examples 10 --meta_filter_portraits_labeling True
+(base) student@datascience:/media/Storage2$ danbooru-utility --directory ./datasets/ --metadata_dir portraits_meta/ --required_tags "solo"  --max_examples 10 --meta_filter_portraits_labeling True
 
 ```
 

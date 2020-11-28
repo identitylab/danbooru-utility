@@ -287,10 +287,10 @@ def load_all_data_into_label(args):
                     {y['name'] for y in example['tags']},
                     example['rating'],
                     example['score'],
-                    score_range=args.score_range,
-                    included_ratings=args.ratings,
-                    required_tags=args.required_tags,
-                    banned_tags=args.banned_tags
+                    # score_range=args.score_range,
+                    # included_ratings=args.ratings,
+                    # required_tags=args.required_tags,
+                    # banned_tags=args.banned_tags
                 ):
                     i += 1
                     tmp_records = [example['id'],example['file_ext']]
@@ -648,9 +648,11 @@ def main(args=None):
     if args.meta_filter_portraits:# generate metadata for portraits, original portraits does not have any tags associated.
         data_gen = load_data_filter(args)
         filter_json_portraits(data_gen, args)
+        return 0
 
     if args.meta_filter_portraits_labeling:
         load_all_data_into_label(args)
+        return 0
 
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
